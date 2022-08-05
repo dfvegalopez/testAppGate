@@ -20,15 +20,17 @@ public class DistinctSubsequenceService {
     }
 
     public int getDistinctSubsequence() {
-        if (getSecondString().length() > getFirstString().length()) throw new IllegalArgumentException("The second string can't be higher than first string");
-        if (getSecondString().length() == 0 || getFirstString().length() == 0) throw new IllegalArgumentException("The first and second string must have values");
+        int firsStringLength = getFirstString().length();
+        int secondStringLength = getSecondString().length();
+        if (secondStringLength > firsStringLength) throw new IllegalArgumentException("The second string can't be higher than first string");
+        if (secondStringLength == 0 || firsStringLength == 0) throw new IllegalArgumentException("The first and second string must have values");
 
-        int [][] controlValueArray = createInitialArray(getFirstString().length(), getSecondString().length());
+        int [][] controlValueArray = createInitialArray(firsStringLength, secondStringLength);
         String [] firstArray = Util.getStringArray(getFirstString());
         String [] secondArray = Util.getStringArray(getSecondString());
 
-        for (int i = 0; i < getFirstString().length(); i++) {
-            for (int j = 0; j < getSecondString().length(); j++) {
+        for (int i = 0; i < firsStringLength; i++) {
+            for (int j = 0; j < secondStringLength; j++) {
                 if (firstArray[i].equals(secondArray[j])) {
                     controlValueArray[i+1][j+1] = controlValueArray[i][j]+ controlValueArray[i][j+1];
                 } else {
@@ -36,7 +38,7 @@ public class DistinctSubsequenceService {
                 }
             }
         }
-        return controlValueArray[getFirstString().length()][getSecondString().length()];
+        return controlValueArray[firsStringLength][secondStringLength];
     }
 
     private int[][] createInitialArray(int firstStringLength, int secondStringLength) {
