@@ -14,7 +14,7 @@ public class DistinctSubsequenceServiceTest {
     @Test
     public void validateDistinctSubsequences() {
         whenSubsequencesAreValid();
-        assertTrue(distinctSubsequenceService.getDistinctSubsequence()==0);
+        assertTrue(distinctSubsequenceService.getDistinctSubsequence()==3);
     }
 
     private void whenSubsequencesAreValid() {
