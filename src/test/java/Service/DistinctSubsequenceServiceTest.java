@@ -23,6 +23,12 @@ public class DistinctSubsequenceServiceTest {
         assertTrue(distinctSubsequenceService.getDistinctSubsequence()==3);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void validateDistinctNotValidValueSubsequences() {
+        whenSubsequencesHaveNotValidValue();
+        assertTrue(distinctSubsequenceService.getDistinctSubsequence()==3);
+    }
+
     private void whenSubsequencesAreValid() {
         subsequences = new Subsequences();
         subsequences.setFirstString("rabbbit");
@@ -34,6 +40,13 @@ public class DistinctSubsequenceServiceTest {
         subsequences = new Subsequences();
         subsequences.setFirstString("rabit");
         subsequences.setSecondString("rabbit");
+        distinctSubsequenceService = new DistinctSubsequenceService(subsequences);
+    }
+
+    private void whenSubsequencesHaveNotValidValue() {
+        subsequences = new Subsequences();
+        subsequences.setFirstString("");
+        subsequences.setSecondString("");
         distinctSubsequenceService = new DistinctSubsequenceService(subsequences);
     }
 

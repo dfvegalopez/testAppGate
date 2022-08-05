@@ -21,6 +21,7 @@ public class DistinctSubsequenceService {
 
     public int getDistinctSubsequence() {
         if (getSecondString().length() > getFirstString().length()) throw new IllegalArgumentException("The second string can't be higher than first string");
+        if (getSecondString().length() == 0 || getFirstString().length() == 0) throw new IllegalArgumentException("The first and second string must have values");
 
         int [][] controlValueArray = createInitialArray(getFirstString().length(), getSecondString().length());
         String [] firstArray = Util.getStringArray(getFirstString());
